@@ -53,6 +53,10 @@
         </div>
     </div>
     <div class="card card-price">
+        <a class="btn btn-success btn-round btn-fill col-sm-4 horizontal-space"  (click)="addQuantity();this.getProductsAll();">Ajouter dans le
+            stock</a>
+          <a class="btn btn-danger btn-round btn-fill col-sm-4 horizontal-space"(click)="removeQuantity();this.getProductsAll();">Enlever dans le
+            stock</a>
         <a class="btn btn-primary btn-round btn-fill col-sm-4 horizontal-space" (click)="onModifyPromotion();this.getProductsAll();">Ajouter une
           promotion</a>
     </div> 
