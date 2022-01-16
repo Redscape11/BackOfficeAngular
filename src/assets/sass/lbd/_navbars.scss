@@ -1,0 +1,69 @@
+.nav {
+    > li{
+        > a:hover,
+        > a:focus{
+            background-color: black;
+        }
+        a{
+          p{
+            margin-bottom: 0;
+          }
+        }
+    }
+}
+.navbar{
+    border: $none;
+    font-size: $font-size-navbar;
+    border-radius: 0;
+
+    .navbar-brand {
+        font-weight: $font-weight-normal;
+        margin: $navbar-margin-brand;
+        padding: $navbar-padding-brand;
+        font-size: $font-size-large-navbar;
+        color : rgb(79, 9, 29);
+    }
+   
+    .btn{
+       margin: $navbar-margin-btn;
+       font-size: $font-size-base;
+    }
+    .btn-simple{
+        font-size: $font-size-medium;
+    }
+    .caret{
+       @include center-item();
+    }
+
+    &.fixed{
+        width: calc(100% - $sidebar-width);
+        right: 0;
+        left: auto;
+        border-radius: 0;
+    }
+
+}
+.navbar-default {
+    background-color: rgb(202, 184, 255);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    .navbar-nav{
+        > li > a:not(.btn){
+            color: $dark-gray;
+        }
+
+        > .active > a,
+        > .active > a:not(.btn):hover,
+        > .active > a:not(.btn):focus,
+        > li > a:not(.btn):hover,
+        > li > a:not(.btn):focus {
+            background-color: transparent;
+            border-radius: 3px;
+            color: $info-color;
+            @include opacity(1);
+        }  
+    }
+}
+
+
+

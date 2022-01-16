@@ -1,0 +1,72 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Veuillez saisir le produit dont vous voulez voir les informations</h4>
+                    </div>
+                    <br/>
+                    <div class="content ">
+                        <div class="row">
+                            <div class="dropdown" style="flex-direction: column;">
+                                <button id='full' class="btn dropdown-toggle btn-fill" type="button" data-toggle="dropdown">
+                                    {{product.name}}
+                                <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                <li *ngFor="let item of products">
+                                    <button id='full' class="btn dropdown-toggle " type="button" (click)="onSelectProduct(item)">{{item.name}}</button>
+                                </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="content ">
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nom</th>
+                                        <th scope="col">Prix</th>
+                                        <th scope="col">Promotion</th>
+                                        <th scope="col">Prix en promotion</th>
+                                        <th scope="col">Quantité en stock</th>
+                                    </tr> 
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <td>{{product.name}}</td>
+                                    <td>{{product.price}}</td>
+                                    <td>{{copyDiscount}}</td>
+                                    <td>{{product.salePrice}}</td>
+                                    <td>{{product.quantityInStock}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br>
+                        <br>
+                        <input type="number" value="" placeholder="Ajouter la quantité" class="form-control" [(ngModel)]='newQuantity' />
+                        <br>
+                        <div class="card">
+                            <button class="btn btn-success btn-fill col-sm-6 flex-direction horizontal-space" (click)="addQuantity(product)">+</button>
+                            <button class="btn btn-danger btn-fill col-sm-6 horizontal-space " (click)="removeQuantity(product)">-</button>
+                        </div>
+                        <br>
+                        <br>
+                        <input type="number" value="" placeholder="Ajouter une promotion" class="form-control" [(ngModel)]='newPromotion'/>
+                        <br>
+                        <div class="card">
+                            <button class="btn btn-primary btn-fill col-sm-12 horizontal-space" (click)="onModifyPromotion(product);addSale(product)">Modifier Promotion</button>
+                        </div>
+                        <br>
+                        <br>
+                      </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
