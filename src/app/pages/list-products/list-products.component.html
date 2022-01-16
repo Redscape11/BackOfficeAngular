@@ -1,0 +1,60 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div *ngFor="let category of categories" class="col-md-12">
+                <div class="card card">
+                    
+                    <div class="header">
+                        <h4 class="title">Liste des {{category.name}}</h4>
+                        <p class="category">Gérez votre stock</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Prix</th>
+                                    <th scope="col">Promotion</th>
+                                    <th scope="col">Quantité</th>
+                                    <th scope="col">Vendus</th>
+                                    <th scope="col">Commentaires</th>
+                                    <th scope="col">Ajout <br> Stock</th>
+                                    <th scope="col">Prix <br> transac</th>
+                                    <th scope="col">Ajout <br> promo</th>
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let product of category.products">
+                                    <td>{{product.name}}</td>
+                                    <td>{{product.price}}</td>
+                                    <td>{{product.discount}}</td>
+                                    <td>{{product.quantityInStock}}</td>
+                                    <td>{{product.nombre_produit_vendu}}</td>
+                                    <td>{{product.comments}}</td>
+                                    <td>
+                                      <input type="number" class="small-input" id="newQuantity" placeholder="..."
+                                        [(ngModel)]='newQuantity[product.tig_id]'>
+                                    </td>
+                                    <td>
+                                      <input type="number" class="small-input" id="prixTransaction" placeholder="€"
+                                        [(ngModel)]='prixTransaction[product.tig_id]'>
+                                    </td>
+                                    <td>
+                                      <input type="number" class="small-input" id="newPromotion" placeholder="%"
+                                        [(ngModel)]='newPromotion[product.tig_id]'>
+                                    </td>
+                      
+                                  </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+                
+        </div>
+    </div>
+    <div class="card card-price">
+        <a class="btn btn-primary btn-round btn-fill col-sm-4 horizontal-space" (click)="onModifyPromotion();this.getProductsAll();">Ajouter une
+          promotion</a>
+    </div> 
+</div>
+
