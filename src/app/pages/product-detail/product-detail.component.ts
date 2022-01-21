@@ -45,8 +45,8 @@ export class ProductdetailComponent implements OnInit {
 
   addSale(item) {
     this.copyDiscount = item.discount
-    // this.salePrice = Math.round(((item.price / 100) * (100 - this.copyDiscount)) * 100) / 100
-    this.salePrice = 6;
+    this.salePrice = Math.round(((item.price / 100) * (100 - this.copyDiscount)) * 100) / 100;
+    
   }
 
   onSelectProduct(item) {

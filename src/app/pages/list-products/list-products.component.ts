@@ -7,16 +7,13 @@ import { ProductsService } from '../../services/products.service';
   styleUrls: ['./list-products.component.css']
 })
 export class ListproductsComponent implements OnInit {
-    productsPoisson;
-    productsCrustaces;
-    productsCoquillages;
     newQuantity;
     newPromotion;
     prixTransaction;
     categories = [
-      { "id": 1, "name": "poissons", "products": null  },
-      { "id": 2, "name": "crustaces", "products": null },
-      { "id": 3, "name": "coquillages", "products": null },
+      { "id": 1, "category": 0,"name": "Poissons", "products": null  },
+      { "id": 2, "category": 1,"name": "Coquillages", "products": null },
+      { "id": 3, "category": 2,"name": "Crustacés", "products": null },
     ];
     poissons:boolean = true;
     crustaces: boolean=true;
@@ -31,17 +28,22 @@ export class ListproductsComponent implements OnInit {
     this.prixTransaction = [];
     this.getProductsAll();
   }
+  getProducts() {
+    this.productsService.getProducts().subscribe(res => {
+
+    });
+  }
+
   getProductsAll() {
     for (let i = 0; i < this.categories.length; i++){
-      this.getProductsCategory(this.categories[i].name);
-      console.log(this.categories[i].products)
+      this.getProductsCategory(this.categories[i].category);
     }
   }
 
-  getProductsCategory(category) {
-    this.productsService.getProductCategories(category).subscribe(res => {
+  getProductsCategory(cat) {
+    this.productsService.getProductCategories(cat).subscribe(res => {
       for (let i = 0; i < this.categories.length; i++)
-        if (this.categories[i].name == category) {
+        if (this.categories[i].category == cat) {
           this.categories[i].products = res;
         }
     },
@@ -56,7 +58,7 @@ export class ListproductsComponent implements OnInit {
         this.productsService.setPromotion(tig_id, this.newPromotion[tig_id]).subscribe(res => {
           res;
         },
-          (err) => {
+          (err) => { 
             alert('failed loading json data');
           });
       }
@@ -67,35 +69,35 @@ export class ListproductsComponent implements OnInit {
 
   addQuantity() {
     for (let tig_id = 0; tig_id < this.newQuantity.length; tig_id++) {
-      if (this.newQuantity[tig_id]) {
-        if (this.prixTransaction[tig_id]){
+      if (this.newQuantity[tig_id] != undefined) {
+        if (this.prixTransaction[tig_id] > 0){
           this.addTransaction(tig_id, "Purchase");
-          this.productsService.addQuantity(tig_id, this.newQuantity[tig_id]).subscribe(res => {
-            res;
-          },
-            (err) => {
-              alert(err + 'failed loading json data');
-            });
+          // this.productsService.addQuantity(tig_id, this.newQuantity[tig_id]).subscribe(res => {
+          //   res;
+          // },
+          //   (err) => {
+          //     alert(err + 'failed loading json data');
+          //   });
         }
       }
     }
-    console.log(this.newQuantity);
     this.getProductsAll();
   }
   removeQuantity() {
     for (let tig_id = 0; tig_id < this.newQuantity.length; tig_id++) {
       if (this.newQuantity[tig_id]) {
-        if (this.prixTransaction[tig_id]) {
-          if (this.prixTransaction[tig_id] == 0)
+        if (this.prixTransaction[tig_id] != undefined) {
+          // this.productsService.removeQuantity(tig_id, this.newQuantity[tig_id]).subscribe(res => {
+          //   res;
+          // },
+          //   (err) => {
+          //     alert(err + 'failed loading json data');
+          //   });
+          if (this.prixTransaction[tig_id] == 0){
             this.addTransaction(tig_id, "Unsold");
-          else
+          } else {
             this.addTransaction(tig_id, "Sale")
-          /*this.productsService.removeQuantity(tig_id, this.newQuantity[tig_id]).subscribe(res => {
-            res;
-          },
-            (err) => {
-              alert(err + 'failed loading json data');
-            });*/
+          }
         }
       }
     }
@@ -108,21 +110,24 @@ export class ListproductsComponent implements OnInit {
     this.getProductsAll();
   }
   addTransaction(tig_id, type){
-    if (this.newQuantity[tig_id] && this.prixTransaction[tig_id]) {
+    // if (this.newQuantity[tig_id] && this.prixTransaction[tig_id]) {
       let trans = {
         "price": this.prixTransaction[tig_id],
         "quantity": this.newQuantity[tig_id],
         "tig_id": tig_id,
         "type": type
       }
+
       this.productsService.postTransaction(trans).subscribe(res => {
         res;
+        this.getProductsAll();
       },
       (err) => {
         alert(err + 'failed loading json data');
       });
-    }
-  } 
+    // }
+  }
+
 }
 
 

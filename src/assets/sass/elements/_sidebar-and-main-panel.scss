@@ -27,6 +27,7 @@
         .dropdown .dropdown-backdrop{
             display: none !important;
         }
+        background-color: rgb(50, 82, 136);
     }
 
     .sidebar-background{
@@ -114,7 +115,7 @@
             &.active > a{
                 color: #FFFFFF;
                 opacity: 1;
-                background: rgba(255,255,255,0.23);
+                background: rgb(144, 170, 203);
 
             }
 
@@ -186,10 +187,7 @@
     &.has-image:after{
         opacity: .77;
     }
-
-   
 }
-
 
 .main-panel{
     background: rgb(250, 237, 198);
