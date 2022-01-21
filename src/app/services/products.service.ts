@@ -25,7 +25,7 @@ export class ProductsService {
     return this.http.get(this.url + "/decrementStock/" + id + "/" + quantity + "/");
   }
   getProductCategories(category){
-    return this.http.get(this.url + "/" + category + "/");
+    return this.http.get(this.url + "/infoproducts/"  + category+ "/");
   }
   postTransaction(trans) {
     return this.http.post(this.url + "/transactions/", trans);
@@ -34,7 +34,7 @@ export class ProductsService {
     return this.http.get(this.url + "/transactions/");
   }
   getTransactionCategory(category) {
-    console.log(category)
     return this.http.get(this.url + "/transactions/" + category + "/");
   }
+  
 }

@@ -51,15 +51,15 @@
                         <input type="number" value="" placeholder="Ajouter la quantité" class="form-control" [(ngModel)]='newQuantity' />
                         <br>
                         <div class="card">
-                            <button class="btn btn-success btn-fill col-sm-6 flex-direction horizontal-space" (click)="addQuantity(product)">+</button>
-                            <button class="btn btn-danger btn-fill col-sm-6 horizontal-space " (click)="removeQuantity(product)">-</button>
+                            <button class="btn  btn-fill col-sm-6 flex-direction horizontal-space"style="background-color: #66DE93" (click)="addQuantity(product)">+</button>
+                            <button class="btn  btn-fill col-sm-6 horizontal-space" style="background-color: #D83A56"(click)="removeQuantity(product)">-</button>
                         </div>
                         <br>
                         <br>
                         <input type="number" value="" placeholder="Ajouter une promotion" class="form-control" [(ngModel)]='newPromotion'/>
                         <br>
                         <div class="card">
-                            <button class="btn btn-primary btn-fill col-sm-12 horizontal-space" (click)="onModifyPromotion(product);addSale(product)">Modifier Promotion</button>
+                            <button class="btn  btn-fill col-sm-12 horizontal-space"style="background-color:#90AACB" (click)="onModifyPromotion(product);addSale(product)">Modifier Promotion</button>
                         </div>
                         <br>
                         <br>
