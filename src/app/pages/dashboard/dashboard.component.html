@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-md-4">
                 <lbd-chart
-                  [title]="'Quantité en Stock'"
-                  [subtitle]="'Liste des différents produits resté en stock classé par categorie'"
+                  [title]="'Proportion des stocks'"
+                  [subtitle]="'Liste de la proportion des stocks classé par categorie'"
                   [chartClass]="'ct-perfect-fourth'"
                   [chartType]="emailChartType"
                   [chartData]="getTotalQuantityByCategory()"
@@ -16,8 +16,8 @@
             </div>
             <div class="col-md-8">
                 <lbd-chart
-                  [title]="'ChiffreAffaires sur les mois de cette année'"
-                  [subtitle]="'Performance annuelle'"
+                  [title]="'Chiffre d\'affaires'"
+                  [subtitle]="'Sur les mois de cette année'"
                   [chartType]="hoursChartType"
                   [chartData]="getchiffreAffaires()"
                   [chartOptions]="hoursChartOptions"
@@ -32,8 +32,8 @@
         <div class="row">
             <div class="col-md-6">
                 <lbd-chart
-                  [title]="'Ventes 2022'"
-                  [subtitle]="'Quantité de tous les produits vendus'"
+                  [title]="'Produits vendus'"
+                  [subtitle]="'Le nombre de ventes par catégorie'"
                   [chartType]="activityChartType"
                   [chartData]="getTotalSalesByCategory()"
                   [chartOptions]="activityChartOptions"

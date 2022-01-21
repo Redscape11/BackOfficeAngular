@@ -7,19 +7,19 @@ import { ProductsService } from '../../services/products.service';
   styleUrls: ['./list-products.component.css']
 })
 export class ListproductsComponent implements OnInit {
-    newQuantity;
-    newPromotion;
-    prixTransaction;
-    categories = [
-      { "id": 1, "category": 0,"name": "Poissons", "products": null  },
-      { "id": 2, "category": 1,"name": "Coquillages", "products": null },
-      { "id": 3, "category": 2,"name": "Crustacés", "products": null },
-    ];
-    poissons:boolean = true;
-    crustaces: boolean=true;
-    coquillages: boolean=true;
-    visibility = [];
-    
+  newQuantity;
+  newPromotion;
+  prixTransaction;
+  categories = [
+    { "id": 1, "category": 0, "name": "Poissons", "products": null },
+    { "id": 2, "category": 1, "name": "Coquillages", "products": null },
+    { "id": 3, "category": 2, "name": "Crustacés", "products": null },
+  ];
+  poissons: boolean = true;
+  crustaces: boolean = true;
+  coquillages: boolean = true;
+  visibility = [];
+
   constructor(public productsService: ProductsService) { }
 
   ngOnInit() {
@@ -35,7 +35,7 @@ export class ListproductsComponent implements OnInit {
   }
 
   getProductsAll() {
-    for (let i = 0; i < this.categories.length; i++){
+    for (let i = 0; i < this.categories.length; i++) {
       this.getProductsCategory(this.categories[i].category);
     }
   }
@@ -58,26 +58,19 @@ export class ListproductsComponent implements OnInit {
         this.productsService.setPromotion(tig_id, this.newPromotion[tig_id]).subscribe(res => {
           res;
         },
-          (err) => { 
+          (err) => {
             alert('failed loading json data');
           });
       }
     }
-    console.log(this.newPromotion)
     this.getProductsAll();
   }
 
   addQuantity() {
     for (let tig_id = 0; tig_id < this.newQuantity.length; tig_id++) {
       if (this.newQuantity[tig_id] != undefined) {
-        if (this.prixTransaction[tig_id] > 0){
+        if (this.prixTransaction[tig_id] > 0) {
           this.addTransaction(tig_id, "Purchase");
-          // this.productsService.addQuantity(tig_id, this.newQuantity[tig_id]).subscribe(res => {
-          //   res;
-          // },
-          //   (err) => {
-          //     alert(err + 'failed loading json data');
-          //   });
         }
       }
     }
@@ -87,13 +80,7 @@ export class ListproductsComponent implements OnInit {
     for (let tig_id = 0; tig_id < this.newQuantity.length; tig_id++) {
       if (this.newQuantity[tig_id]) {
         if (this.prixTransaction[tig_id] != undefined) {
-          // this.productsService.removeQuantity(tig_id, this.newQuantity[tig_id]).subscribe(res => {
-          //   res;
-          // },
-          //   (err) => {
-          //     alert(err + 'failed loading json data');
-          //   });
-          if (this.prixTransaction[tig_id] == 0){
+          if (this.prixTransaction[tig_id] == 0) {
             this.addTransaction(tig_id, "Unsold");
           } else {
             this.addTransaction(tig_id, "Sale")
@@ -101,31 +88,27 @@ export class ListproductsComponent implements OnInit {
         }
       }
     }
-    console.log(this.newQuantity);
     this.getProductsAll();
   }
-  modifyStock(){
+  modifyStock() {
     this.addQuantity();
     this.onModifyPromotion();
     this.getProductsAll();
   }
-  addTransaction(tig_id, type){
-    // if (this.newQuantity[tig_id] && this.prixTransaction[tig_id]) {
-      let trans = {
-        "price": this.prixTransaction[tig_id],
-        "quantity": this.newQuantity[tig_id],
-        "tig_id": tig_id,
-        "type": type
-      }
+  addTransaction(tig_id, type) {
+    let trans = {
+      "price": this.prixTransaction[tig_id],
+      "quantity": this.newQuantity[tig_id],
+      "tig_id": tig_id,
+      "type": type
+    }
 
-      this.productsService.postTransaction(trans).subscribe(res => {
-        res;
-        this.getProductsAll();
-      },
-      (err) => {
-        alert(err + 'failed loading json data');
-      });
-    // }
+    this.productsService.postTransaction(trans).subscribe(res => {
+      res;
+      this.getProductsAll();
+    }, (err) => {
+      alert(err + 'failed loading json data');
+    });
   }
 
 }
