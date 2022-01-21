@@ -30,17 +30,15 @@ export class DashboardComponent implements OnInit {
   public PoissonsQuantity;
   public CrustacesQuantity;
   public CoquillagesQuantity;
-  products;
+  products = [];
+  transactions;
   categories = [
     { "id": 1, "category": 0, "name": "poissons", "products": null },
     { "id": 2, "category": 1, "name": "coquillages", "products": null },
     { "id": 3, "category": 2, "name": "crustaces", "products": null },
   ];
-  transactions;
 
-  constructor(public productsService: ProductsService) {
-    this.products = [];
-  }
+  constructor(public productsService: ProductsService) { }
 
   ngOnInit() {
     this.emailChartType = ChartType.Pie;
@@ -51,8 +49,6 @@ export class DashboardComponent implements OnInit {
     ];
     this.hoursChartType = ChartType.Line;
     this.hoursChartOptions = {
-
-     
       height: '245px',
       axisX: {
         showGrid: false,
@@ -108,12 +104,9 @@ export class DashboardComponent implements OnInit {
       this.transactions = res;
       this.getTotalQuantityByCategory();
       this.getTotalSalesByCategory();
-      
-      console.log(res);
-    },
-      (err) => {
-        alert('failed loading json data');
-      });
+    }, (err) => {
+      alert('failed loading json data');
+    });
   }
   getchiffreAffaires() {
     let labels = [];
@@ -162,7 +155,7 @@ export class DashboardComponent implements OnInit {
             Marge[Marge.length] = (0 - this.transactions[i].price)
           }
         }
-      } 
+      }
     }
     return {
       labels: labels,
@@ -187,7 +180,7 @@ export class DashboardComponent implements OnInit {
       });
   }
   getProducts() {
-    this.productsService.getProducts().subscribe(res => {
+    this.productsService.getProducts().subscribe((res: any) => {
       this.products = res;
       this.getTransaction();
     },
@@ -233,7 +226,7 @@ export class DashboardComponent implements OnInit {
     let poisson = ((poissonSales / total) * 100).toFixed(2);
     let coquillage = ((coquillagesSales / total) * 100).toFixed(2)
     let crustaces = ((crustacesSales / total) * 100).toFixed(2)
-    
+
     return {
       labels: ['Nombre de produits vendus'],
       series: [[poissonSales], [coquillagesSales], [crustacesSales]]
