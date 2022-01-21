@@ -8,20 +8,19 @@
     z-index: 9000;
     position: absolute;
     
-    @include opacity(0); 
-    @include box-shadow($dropdown-shadow);
+    opacity:0; 
+    box-shadow: $dropdown-shadow;
         
     .open &{
-        @include opacity(1);
+        opacity :1;
         margin-top: 10px;
         visibility: visible;
     }    
     .select &{
        border-radius: $border-radius-bottom; 
-       @include box-shadow(none);
-       @include transform-origin($select-coordinates);
-       @include transform-scale(1);
-       @include transition($fast-transition-time, $transition-linear);
+       box-shadow: none;
+       transform-origin :$select-coordinates; 
+       transition:$fast-transition-time, $transition-linear;
        margin-top: -20px;
     }
     .select.open &{
@@ -67,33 +66,8 @@
         opacity: 1;
         text-decoration: none;
     }
-    
-    &.dropdown-blue > li > a:hover,
-    &.dropdown-blue > li > a:focus{
-        background-color: $light-blue;
-    }
-    &.dropdown-azure > li > a:hover,
-    &.dropdown-azure > li > a:focus{
-        background-color: $light-azure;
-    }
-    &.ct-green > li > a:hover,
-    &.ct-green > li > a:focus{
-        background-color: $light-green;
-    }
-    &.dropdown-orange > li > a:hover,
-    &.dropdown-orange > li > a:focus{
-        background-color: $light-orange;
-    }
-    &.dropdown-red > li > a:hover,
-    &.dropdown-red > li > a:focus{
-        background-color: $light-red;
-    }
-
 }
 
-
-
-//fix bug for the select items in btn-group 
 .btn-group.select{
     overflow: hidden;
 }

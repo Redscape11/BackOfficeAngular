@@ -9,8 +9,6 @@
     .sidebar .nav-mobile-menu {
         display: none;
     }
-
-   
     .footer:not(.footer-big){
         nav > ul{
            li:first-child{
@@ -394,13 +392,6 @@
     .table-responsive{
         overflow: visible;
     }
-
-    // .responsive-nav p{
-    //     line-height: normal;
-    //     display: inline-block;
-    //     margin: 0;
-    // }
-
 }
 
 @media (max-width: 991px){

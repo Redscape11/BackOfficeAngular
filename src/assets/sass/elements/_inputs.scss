@@ -1,0 +1,12 @@
+.form-control::-moz-placeholder{
+    color :$dark-gray;
+}
+.form-control:-moz-placeholder{
+    color :$dark-gray;
+}  
+.form-control::-webkit-input-placeholder{
+    color :$dark-gray; 
+} 
+.form-control:-ms-input-placeholder{
+    color :$dark-gray;
+}

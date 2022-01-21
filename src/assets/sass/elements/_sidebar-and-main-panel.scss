@@ -177,7 +177,7 @@
     }
 
     &:after{
-       @include icon-gradient($black-color-top, $black-color-bottom);
+      
        z-index: 3;
        opacity: 1;
     }
@@ -210,7 +210,7 @@
     }
 
     .navbar{
-        margin-bottom: 0;
+        margin-bottom: auto;
     }
 }
 

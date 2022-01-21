@@ -32,7 +32,11 @@
         font-size: $font-size-medium;
     }
     .caret{
-       @include center-item();
+        left: 0;
+        right: 0;
+        margin-right: auto;
+        margin-left: auto;
+        position: absolute;
     }
 
     &.fixed{
@@ -60,7 +64,7 @@
             background-color: transparent;
             border-radius: 3px;
             color: $info-color;
-            @include opacity(1);
+            opacity :1 ;
         }  
     }
 }

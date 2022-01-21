@@ -3,62 +3,28 @@
     background-color: $transparent-bg;
     font-weight: $font-weight-normal;
     
-    @include opacity(.8);
+    opacity : 0.8;
     padding: $padding-base-vertical $padding-base-horizontal;
     
-    @include btn-styles($default-color, $default-states-color);
+    
     
     &:hover,
     &:focus{
-        @include opacity(1);
+        opacity : 1;
         outline: 0 !important;
     }
     &:active,
     &.active,
     .open > &.dropdown-toggle {
-         @include box-shadow(none);
+         box-shadow :none;
          outline: 0 !important;
     }
-    
-    &.btn-icon{
-        padding: $padding-base-vertical;
-    }
-    
 }
-
-
-.btn-primary { @include btn-styles($primary-color, $primary-states-color); }
-.btn-success { @include btn-styles($success-color, $success-states-color); }
-.btn-info    { @include btn-styles($info-color, $info-states-color); }
-.btn-warning { @include btn-styles($warning-color, $warning-states-color); }
-.btn-danger  { @include btn-styles($danger-color, $danger-states-color); }
-.btn-neutral { 
-    @include btn-styles($white-color, $white-color);
-    
-    &:active,
-    &.active,
-    .open > &.dropdown-toggle{
-         background-color: $white-color;
-         color: $default-color;
-    }    
-    
-    &.btn-fill,
-    &.btn-fill:hover,
-    &.btn-fill:focus{
-        color: $default-color;
-    }
-    
-    &.btn-simple:active,
-    &.btn-simple.active{
-        background-color: transparent;
-    }
-}
-
 .btn{
      &:disabled,
      &[disabled],
      &.disabled{
-        @include opacity(.5);
+     opacity :.5;
     }
 }
 .btn-round{

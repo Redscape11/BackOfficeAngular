@@ -1,5 +1,4 @@
 .table{
-   
    .radio,
    .checkbox{
         position: relative;
@@ -34,7 +33,7 @@
     }
 
    .td-actions .btn{
-        @include opacity(0.36);
+        opacity :0.36 ;
     
         &.btn-xs{
             padding-left: 3px;
@@ -50,7 +49,7 @@
         
         &:hover{
             .td-actions .btn{
-                @include opacity(1);
+                opacity :1;
             }
         }
     }
