@@ -1,7 +1,19 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-
+            <div class="col-md-4">
+                <lbd-chart
+                  [title]="'Quantité en Stock'"
+                  [subtitle]="'Liste des différents produits resté en stock classé par categorie'"
+                  [chartClass]="'ct-perfect-fourth'"
+                  [chartType]="emailChartType"
+                  [chartData]="getTotalQuantityByCategory()"
+                  [legendItems]="emailChartLegendItems"
+                  [withHr]="true"
+                  [footerIconClass]="'fa fa-clock-o'"
+                  [footerText]="'Chiffres du dernier mois'">
+                </lbd-chart>
+            </div>
             <div class="col-md-8">
                 <lbd-chart
                   [title]="'ChiffreAffaires sur les mois de cette année'"
@@ -16,6 +28,21 @@
                   [footerText]="'Mis a jour il y a 3 minutes'">
                 </lbd-chart>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <lbd-chart
+                  [title]="'Ventes 2022'"
+                  [subtitle]="'Quantité de tous les produits vendus'"
+                  [chartType]="activityChartType"
+                  [chartData]="getTotalSalesByCategory()"
+                  [chartOptions]="activityChartOptions"
+                  [chartResponsive]="activityChartResponsive"
+                  [legendItems]="activityChartLegendItems"
+                  [withHr]="true">
+                </lbd-chart>
+            </div>
+   
         </div>
     </div>
 </div>
