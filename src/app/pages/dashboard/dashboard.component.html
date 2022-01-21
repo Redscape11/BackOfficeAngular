@@ -1,0 +1,21 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-8">
+                <lbd-chart
+                  [title]="'ChiffreAffaires sur les mois de cette année'"
+                  [subtitle]="'Performance annuelle'"
+                  [chartType]="hoursChartType"
+                  [chartData]="getchiffreAffaires()"
+                  [chartOptions]="hoursChartOptions"
+                  [chartResponsive]="hoursChartResponsive"
+                  [legendItems]="hoursChartLegendItems"
+                  [withHr]="true"
+                  [footerIconClass]="'fa fa-history'"
+                  [footerText]="'Mis a jour il y a 3 minutes'">
+                </lbd-chart>
+            </div>
+        </div>
+    </div>
+</div>
